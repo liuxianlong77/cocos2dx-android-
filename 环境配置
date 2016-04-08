@@ -1,0 +1,49 @@
+1：下载android-ndk-xx , sdk, ant, jer（除jer运行环境，其他都放到MYBIN目录下）
+
+2:配置环境变量：
+export MYBIN=/Users/wupc/bin 
+export NDK_ROOT=$MYBIN/android-ndk-r9d/
+export ANDROID_SDK_ROOT=$MYBIN/android-sdk-macosx/
+export ANT_ROOT=$MYBIN/apache-ant-1.9.4/bin
+export JAVA_TOOL_OPTIONS=-Dfile.encoding=UTF-8
+
+3：（拆分）打包过程
+
+a：c++代码的编译
+$ST_ndkbuild -C $PROJ_ROOT -j4 NDK_MODULE_PATH=$CC_SRC_ROOT:$CC_SRC_ROOT/entensions:$CC_SRC_ROOT/external NDK_TOOLCHAIN_VERSION=4.8 NDK_DEBUG=1
+ST_ndkbuild="$MYBIN/android-ndk-r9d/ndk-build"
+PROJ_ROOT=proj.android 
+
+b:android sdk update
+$ST_android update project -t android-13 -p proj.android
+$ST_android update lib-project -p $CC_SRC_ROOT/cocos/platform/android/java -t android-13
+ST_android="$MYBIN/android-sdk-macosx/tools/android"
+CC_SRC_ROOT=cocos2dx3.6/（cocos2dx的目录）
+
+b:java代码的编译
+$ST_ant debug
+ST_ant="$MYBIN/apache-ant-1.9.4/bin/ant"
+
+附件android.mk
+LOCAL_PATH := $(call my-dir)
+
+include $(CLEAR_VARS)
+
+LOCAL_MODULE := game_controller_test_shared
+
+LOCAL_MODULE_FILENAME := libgame_controller_test
+
+LOCAL_SRC_FILES := main.cpp \
+                   Classes/AppDelegate.cpp \
+                   Classes/GameControllerTest.cpp
+
+LOCAL_C_INCLUDES := $(LOCAL_PATH)/Classes \
+                    $(LOCAL_PATH)/external
+
+LOCAL_STATIC_LIBRARIES := cocos_static
+
+include $(BUILD_SHARED_LIBRARY)
+$(call import-add-path,$(CC_SRC_ROOT)/entensions)
+$(call import-add-path,$(CC_SRC_ROOT)/external)
+$(call import-add-path,$(CC_SRC_ROOT))
+$(call import-module,.)
