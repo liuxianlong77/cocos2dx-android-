@@ -1,0 +1,35 @@
+export set SVN_EDITOR=vim
+export set PS1='\012[\u \w \A]\$ '
+export CLICOLOR=1
+export MYBIN=/Users/wupc/bin 
+export NDK_ROOT=$MYBIN/android-ndk-r9d/
+export ANDROID_SDK_ROOT=$MYBIN/android-sdk-macosx/
+export ANT_ROOT=$MYBIN/apache-ant-1.9.4/bin
+export JAVA_TOOL_OPTIONS=-Dfile.encoding=UTF-8
+
+export LIB_SERVER_ROOT=/Users/wupc/LexSVN/casino_server/common 
+export LIB_ILEX_ROOT=/Users/wupc/LexSVN/ilex1/v0
+
+export ST_adb="$MYBIN/android-sdk-macosx/platform-tools/adb"
+export ST_android="$MYBIN/android-sdk-macosx/tools/android"
+export ST_ant="$MYBIN/apache-ant-1.9.4/bin/ant"
+export ST_ndkbuild="$MYBIN/android-ndk-r9d/ndk-build"
+export ST_alog="$MYBIN/android-sdk-macosx/platform-tools/adb logcat | egrep 'Lex|Jai|jai|JAI|cocos'"
+export ST_alogc="$MYBIN/android-sdk-macosx/platform-tools/adb logcat -c"
+export ST_cocos="$MYBIN/cocos2d-x-3.6/tools/cocos2d-console/bin/cocos"
+
+alias .cocos="~/bin/cocos2d-x-3.6/tools/cocos2d-console/bin/cocos"
+
+export CC_SRC_ROOT="/Users/wupc/space/proj/cocos2d"
+
+alias .adb="$MYBIN/android-sdk-macosx/platform-tools/adb"
+alias .android="$MYBIN/android-sdk-macosx/tools/android"
+alias .ant="$MYBIN/apache-ant-1.9.4/bin/ant"
+alias .ndkbuild="$MYBIN/android-ndk-r9d/ndk-build"
+alias .showallinfinder="defaults write com.apple.finder AppleShowAllFiles -bool "
+alias .alog="$MYBIN/android-sdk-macosx/platform-tools/adb logcat | egrep 'Lex|Jai|jai|JAI|cocos'"
+alias .alogc="$MYBIN/android-sdk-macosx/platform-tools/adb logcat -c"
+alias .cocos="$MYBIN/cocos2d-x-3.6/tools/cocos2d-console/bin/cocos"
+alias .his="history"
+alias .showxcode="open $HOME/Library/Developer/Xcode/"
+alias .log="$MYBIN/android-sdk-macosx/platform-tools/adb logcat"
